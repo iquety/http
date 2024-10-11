@@ -26,34 +26,34 @@ interface Session
     public function setName(string $name): void;
 
     /** Devolve o nome da sessão */
-    public function name(): string;
+    public function getName(): string;
 
     /** Define um atributo */
     public function setParam(string $name, mixed $value): void;
 
     /** Devolve o valor de um atributo */
-    public function param(string $name, mixed $default = null): mixed;
+    public function getParam(string $name, mixed $default = null): mixed;
 
     /** Verifica se o atributo já foi definido */
-    public function has(string $name): bool;
+    public function hasParam(string $name): bool;
 
     /**
      * Devolve todos os atributos da sessão
      * @return array<string,mixed>
      */
-    public function all(): array;
+    public function allParams(): array;
 
     /**
      * Define vários atributos
      * @param array<string,mixed> $attributes
      */
-    public function replace(array $attributes): void;
+    public function replaceParams(array $attributes): void;
 
     /** Remove um atributo */
-    public function remove(string $name): void;
+    public function removeParam(string $name): void;
 
     /** Devolve o valor e remove o atributo ao mesmo tempo */
-    public function forget(string $name): mixed;
+    public function forgetParam(string $name): mixed;
 
     /** Limpa todos os atributos da sessão */
     public function clear(): void;
@@ -65,4 +65,30 @@ interface Session
      * @throws RuntimeException se a invalidação falhar
      */
     public function invalidate(int $lifetime = null): void;
+
+    /** Adiciona uma mensagem ao campo especificado */
+    public function addFlash(string $field, string $message): void;
+
+    /**
+     * Devolve as mensagens do campo especificado e remove-a ao mesmo tempo
+     * @param array<int,string> $defaultMessages
+     * @return array<int,string>
+     */
+    public function forgetFlash(string $field, array $defaultMessages = []): array;
+
+    /**
+     * Devolve todas as mensagens e remove-as ao mesmo tempo
+     * @return array<int,string>
+     */
+    public function forgetAllFlash(): array;
+
+    /**
+     * Devolve as mensagens do campo especificado
+     * @param array<int,string> $defaultMessages
+     * @return array<int,string>
+     */
+    public function getFlash(string $field, array $defaultMessages = []): array;
+
+    /** @return array<int,string> */
+    public function allFlash(): array;
 }

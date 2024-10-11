@@ -1,6 +1,7 @@
 # Fabricas
 
---page-nav--
+[◂ Índice da documentação](indice.md) | [Enumerações ▸](02-enumeracoes.md)
+-- | --
 
 ## 1. Implementações disponíveis
 
@@ -110,4 +111,5 @@ $factories->createUploadedFile(
 visite [Predefined Constants](https://www.php.net/manual/en/filesystem.constants.php) no
 manual do PHP
 
---page-nav--
+[◂ Índice da documentação](indice.md) | [Enumerações ▸](02-enumeracoes.md)
+-- | --

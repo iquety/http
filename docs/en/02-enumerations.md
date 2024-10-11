@@ -1,10 +1,11 @@
-# Enumerações
+# Enumerations
 
---page-nav--
+[◂ Factories](01-factories.md) | [Documentation index](index.md) | [Sessions ▸](03-sessions.md)
+-- | -- | --
 
 ## 1. HttpMethod
 
-Enumeração dos verbos disponíveis para efetuar requisições:
+List of verbs available for making requests:
 
 ```php
 HttpMethod::ANY
@@ -15,13 +16,13 @@ HttpMethod::POST
 HttpMethod::PUT   
 ```
 
-Para fabricar uma opção com base no valor:
+To create an option based on value:
 
 ```php
 HttpMethod::from('POST')
 ```
 
-Para devolver a lista de verbos:
+To return the verb list:
 
 ```php
 HttpMethod::all()
@@ -38,13 +39,13 @@ HttpMime::TEXT // text/plain
 HttpMime::XML // application/xml
 ```
 
-Para fabricar uma opção com base no valor:
+To create an option based on value:
 
 ```php
 HttpMime::from('text/html')
 ```
 
-Para devolver a lista de tipos suportados:
+To return the list of supported types:
 
 ```php
 HttpMime::all()
@@ -52,7 +53,7 @@ HttpMime::all()
 
 ## 3. HttpStatus
 
-Enumeração dos tipos mime disponíveis para efetuar requisições e respostas:
+Enumeration of mime types available for making requests and responses:
 
 ```php
 HttpStatus::CONTINUE // 100;
@@ -119,22 +120,23 @@ HttpStatus::NOT_EXTENDED // 510
 HttpStatus::NETWORK_AUTHENTICATION_REQUIRED // 511
 ```
 
-Para devolver a frase de motivo do Status Http:
+To return the Http Status reason phrase:
 
 ```php
 HttpStatus::NOT_FOUND->reason() // Not Found
 ```
 
-Para fabricar uma opção com base no valor:
+To create an option based on value:
 
 ```php
 HttpStatus::from('404') // HttpMime::NOT_FOUND
 ```
 
-Para devolver a lista de status suportados:
+To return the list of supported statuses:
 
 ```php
 HttpStatus::all()
 ```
 
---page-nav--
+[◂ Factories](01-factories.md) | [Documentation index](index.md) | [Sessions ▸](03-sessions.md)
+-- | -- | --

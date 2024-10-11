@@ -19,7 +19,8 @@ class MemorySession implements Session
         static::$session = [ // @codeCoverageIgnore
             'id' => microtime(),
             'name' => '',
-            'data' => []
+            'data' => [],
+            'flash' => []
         ];
     }
 
@@ -51,7 +52,7 @@ class MemorySession implements Session
     }
 
     /** Devolve o nome da sessão */
-    public function name(): string
+    public function getName(): string
     {
         return static::$session['name']; //@phpstan-ignore-line
     }
@@ -63,25 +64,25 @@ class MemorySession implements Session
     }
 
     /** Devolve o valor de um atributo */
-    public function param(string $name, mixed $default = null): mixed
+    public function getParam(string $name, mixed $default = null): mixed
     {
         return static::$session['data'][$name] ?? $default; //@phpstan-ignore-line
     }
 
     /** Verifica se o atributo já foi definido */
-    public function has(string $name): bool
+    public function hasParam(string $name): bool
     {
         return isset(static::$session['data'][$name]); //@phpstan-ignore-line
     }
 
     /** Devolve todos os atributos da sessão */
-    public function all(): array
+    public function allParams(): array
     {
         return static::$session['data']; //@phpstan-ignore-line
     }
 
     /** Define vários atributos */
-    public function replace(array $attributes): void
+    public function replaceParams(array $attributes): void
     {
         foreach ($attributes as $name => $value) {
             static::$session['data'][$name] = $value; //@phpstan-ignore-line
@@ -89,9 +90,9 @@ class MemorySession implements Session
     }
 
     /** Remove um atributo */
-    public function remove(string $name): void
+    public function removeParam(string $name): void
     {
-        if ($this->has($name) === false) {
+        if ($this->hasParam($name) === false) {
             return;
         }
 
@@ -99,11 +100,11 @@ class MemorySession implements Session
     }
 
     /** Devolve o valor e remove o atributo ao mesmo tempo */
-    public function forget(string $name): mixed
+    public function forgetParam(string $name): mixed
     {
-        $value = $this->param($name);
+        $value = $this->getParam($name);
 
-        $this->remove($name);
+        $this->removeParam($name);
 
         return $value;
     }
@@ -112,6 +113,7 @@ class MemorySession implements Session
     public function clear(): void
     {
         static::$session['data'] = []; //@phpstan-ignore-line
+        static::$session['flash'] = []; //@phpstan-ignore-line
     }
 
     /**
@@ -126,5 +128,66 @@ class MemorySession implements Session
     {
         static::$session['id'] = microtime(); //@phpstan-ignore-line
         static::$session['data'] = []; //@phpstan-ignore-line
+    }
+
+    /** Adiciona uma mensagem ao campo especificado */
+    public function addFlash(string $field, string $message): void
+    {
+        if (isset(static::$session['flash'][$field]) === false) { // @phpstan-ignore-line
+            static::$session['flash'][$field] = []; // @phpstan-ignore-line
+        }
+
+        static::$session['flash'][$field][] = $message; // @phpstan-ignore-line
+    }
+
+    /**
+     * Devolve as mensagens do campo especificado e remove-a ao mesmo tempo
+     * @param array<int,string> $defaultMessages
+     * @return array<int,string>
+     */
+    public function forgetFlash(string $field, array $defaultMessages = []): array
+    {
+        if (isset(static::$session['flash'][$field]) === false) { // @phpstan-ignore-line
+            return $defaultMessages;
+        }
+
+        $messages = static::$session['flash'][$field]; // @phpstan-ignore-line
+
+        unset(static::$session['flash'][$field]); // @phpstan-ignore-line
+
+        return $messages;
+    }
+
+    /**
+     * Devolve todas as mensagens e remove-as ao mesmo tempo
+     * @return array<int,string>
+     */
+    public function forgetAllFlash(): array
+    {
+        $all = static::$session['flash']; // @phpstan-ignore-line
+
+        static::$session['flash'] = []; // @phpstan-ignore-line
+
+        return $all;
+    }
+
+    /**
+     * Devolve as mensagens do campo especificado
+     * @param array<int,string> $defaultMessages
+     * @return array<int,string>
+     */
+    public function getFlash(string $field, array $defaultMessages = []): array
+    {
+        if (isset(static::$session['flash'][$field]) === false) { // @phpstan-ignore-line
+            return $defaultMessages;
+        }
+
+        return static::$session['flash'][$field]; // @phpstan-ignore-line
+    }
+
+    /** @return array<int,string> */
+    public function allFlash(): array
+    {
+        return static::$session['flash']; //@phpstan-ignore-line
     }
 }

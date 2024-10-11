@@ -1,6 +1,7 @@
 # Enumerações
 
---page-nav--
+[◂ Fabricas](01-fabricas.md) | [Índice da documentação](indice.md) | [Sessões ▸](03-sessoes.md)
+-- | -- | --
 
 ## 1. HttpMethod
 
@@ -137,4 +138,5 @@ Para devolver a lista de status suportados:
 HttpStatus::all()
 ```
 
---page-nav--
+[◂ Fabricas](01-fabricas.md) | [Índice da documentação](indice.md) | [Sessões ▸](03-sessoes.md)
+-- | -- | --

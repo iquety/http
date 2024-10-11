@@ -21,15 +21,4 @@ enum HttpMime: string
             'application/xml',
         ];
     }
-
-    // public static function makeBy(string $mimeType): HttpMime
-    // {
-    //     return match ($mimeType) {
-    //         'text/html'        => self::HTML,
-    //         'application/json' => self::JSON,
-    //         'text/plain'       => self::TEXT,
-    //         'application/xml'  => self::XML,
-    //         default            => self::HTML
-    //     };
-    // }
 }

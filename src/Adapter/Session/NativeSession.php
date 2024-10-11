@@ -70,7 +70,7 @@ class NativeSession implements Session
     }
 
     /** Devolve o nome da sessão */
-    public function name(): string
+    public function getName(): string
     {
         return $this->sessionObject()->getName();
     }
@@ -82,41 +82,41 @@ class NativeSession implements Session
     }
 
     /** Devolve o valor de um atributo */
-    public function param(string $name, mixed $default = null): mixed
+    public function getParam(string $name, mixed $default = null): mixed
     {
         return $this->sessionObject()->get($name, $default);
     }
 
     /** Verifica se o atributo já foi definido */
-    public function has(string $name): bool
+    public function hasParam(string $name): bool
     {
         return $this->sessionObject()->has($name);
     }
 
     /** Devolve todos os atributos da sessão */
-    public function all(): array
+    public function allParams(): array
     {
         return $this->sessionObject()->all();
     }
 
     /** Define vários atributos */
-    public function replace(array $attributes): void
+    public function replaceParams(array $attributes): void
     {
         $this->sessionObject()->replace($attributes);
     }
 
     /** Remove um atributo */
-    public function remove(string $name): void
+    public function removeParam(string $name): void
     {
         $this->sessionObject()->remove($name);
     }
 
     /** Devolve o valor e remove o atributo ao mesmo tempo */
-    public function forget(string $name): mixed
+    public function forgetParam(string $name): mixed
     {
-        $value = $this->param($name);
+        $value = $this->getParam($name);
 
-        $this->remove($name);
+        $this->removeParam($name);
 
         return $value;
     }
@@ -125,6 +125,8 @@ class NativeSession implements Session
     public function clear(): void
     {
         $this->sessionObject()->clear();
+
+        $this->sessionObject()->getFlashBag()->all();
     }
 
     /**
@@ -138,5 +140,46 @@ class NativeSession implements Session
     public function invalidate(int $lifetime = null): void
     {
         $this->sessionObject()->invalidate($lifetime);
+    }
+
+    /** Adiciona uma mensagem ao campo especificado */
+    public function addFlash(string $field, string $message): void
+    {
+        $this->sessionObject()->getFlashBag()->add($field, $message);
+    }
+
+    /**
+     * Devolve as mensagens do campo especificado e remove-a ao mesmo tempo
+     * @param array<int,string> $defaultMessages
+     * @return array<int,string>
+     */
+    public function forgetFlash(string $field, array $defaultMessages = []): array
+    {
+        return $this->sessionObject()->getFlashBag()->get($field, $defaultMessages);
+    }
+
+    /**
+     * Devolve todas as mensagens e remove-as ao mesmo tempo
+     * @return array<int,string>
+     */
+    public function forgetAllFlash(): array
+    {
+        return $this->sessionObject()->getFlashBag()->all();
+    }
+
+    /**
+     * Devolve as mensagens do campo especificado
+     * @param array<int,string> $defaultMessages
+     * @return array<int,string>
+     */
+    public function getFlash(string $field, array $defaultMessages = []): array
+    {
+        return $this->sessionObject()->getFlashBag()->peek($field, $defaultMessages);
+    }
+
+    /** @return array<int,string> */
+    public function allFlash(): array
+    {
+        return $this->sessionObject()->getFlashBag()->peekAll();
     }
 }

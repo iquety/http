@@ -12,7 +12,7 @@
 ## Sinopse
 
 **Iquety Http** é uma biblioteca que oferece funcionalidades para manipulação
-de mensagens Http através de implementações da PSR7. Oferece suporte para as 
+de mensagens Http através de implementações da PSR7. Oferece suporte para as
 principais implementações do mercado: Laminas Diactoros, Guzzle Http e NyHolm.
 
 ```bash
