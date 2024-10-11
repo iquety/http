@@ -11,14 +11,25 @@ enum HttpMime: string
     case TEXT = 'text/plain';
     case XML  = 'application/xml';
 
-    public static function makeBy(string $mimeType): HttpMime
+    /** @return array<int,string> */
+    public static function all(): array
     {
-        return match ($mimeType) {
-            'text/html'        => self::HTML,
-            'application/json' => self::JSON,
-            'text/plain'       => self::TEXT,
-            'application/xml'  => self::XML,
-            default            => self::HTML
-        };
+        return [
+            'text/html',
+            'application/json',
+            'text/plain',
+            'application/xml',
+        ];
     }
+
+    // public static function makeBy(string $mimeType): HttpMime
+    // {
+    //     return match ($mimeType) {
+    //         'text/html'        => self::HTML,
+    //         'application/json' => self::JSON,
+    //         'text/plain'       => self::TEXT,
+    //         'application/xml'  => self::XML,
+    //         default            => self::HTML
+    //     };
+    // }
 }

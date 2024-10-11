@@ -53,6 +53,7 @@ abstract class AbstractResponsesCase extends TestCase
     /**
      * @test
      * @dataProvider jsonProvider
+     * @param string|array<mixed> $content
      */
     public function createResponseJson(string|array $content, string $body): void
     {
@@ -64,14 +65,14 @@ abstract class AbstractResponsesCase extends TestCase
         );
 
         $this->assertSame(
-            HttpStatus::ACCEPTED->reason(HttpStatus::ACCEPTED->value),
+            HttpStatus::ACCEPTED->reason(),
             $response->getReasonPhrase()
         );
 
         $this->assertSame($body, (string)$response->getBody());
-        
+
         $this->assertTrue($response->hasHeader('Content-type'));
-        
+
         $this->assertSame(HttpMime::JSON->value, $response->getHeaderLine('Content-type'));
     }
 
@@ -110,6 +111,7 @@ abstract class AbstractResponsesCase extends TestCase
     /**
      * @test
      * @dataProvider xmlProvider
+     * @param string|array<mixed> $content
      */
     public function createResponseXml(string|array $content, string $body): void
     {
@@ -121,14 +123,14 @@ abstract class AbstractResponsesCase extends TestCase
         );
 
         $this->assertSame(
-            HttpStatus::ACCEPTED->reason(HttpStatus::ACCEPTED->value),
+            HttpStatus::ACCEPTED->reason(),
             $response->getReasonPhrase()
         );
 
         $this->assertSame($body, (string)$response->getBody());
 
         $this->assertTrue($response->hasHeader('Content-type'));
-        
+
         $this->assertSame(HttpMime::XML->value, $response->getHeaderLine('Content-type'));
     }
 
@@ -167,6 +169,7 @@ abstract class AbstractResponsesCase extends TestCase
     /**
      * @test
      * @dataProvider htmlProvider
+     * @param string|array<mixed> $content
      */
     public function createResponseHtml(string|array $content, string $body): void
     {
@@ -178,14 +181,14 @@ abstract class AbstractResponsesCase extends TestCase
         );
 
         $this->assertSame(
-            HttpStatus::ACCEPTED->reason(HttpStatus::ACCEPTED->value),
+            HttpStatus::ACCEPTED->reason(),
             $response->getReasonPhrase()
         );
 
         $this->assertSame($body, (string)$response->getBody());
 
         $this->assertTrue($response->hasHeader('Content-type'));
-        
+
         $this->assertSame(HttpMime::HTML->value, $response->getHeaderLine('Content-type'));
     }
 
@@ -224,6 +227,7 @@ abstract class AbstractResponsesCase extends TestCase
     /**
      * @test
      * @dataProvider textProvider
+     * @param string|array<mixed> $content
      */
     public function createResponseText(string|array $content, string $body): void
     {
@@ -235,14 +239,14 @@ abstract class AbstractResponsesCase extends TestCase
         );
 
         $this->assertSame(
-            HttpStatus::ACCEPTED->reason(HttpStatus::ACCEPTED->value),
+            HttpStatus::ACCEPTED->reason(),
             $response->getReasonPhrase()
         );
 
         $this->assertSame($body, (string)$response->getBody());
 
         $this->assertTrue($response->hasHeader('Content-type'));
-        
+
         $this->assertSame(HttpMime::TEXT->value, $response->getHeaderLine('Content-type'));
     }
 }

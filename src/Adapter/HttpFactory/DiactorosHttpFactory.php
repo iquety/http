@@ -27,7 +27,7 @@ use Psr\Http\Message\UriInterface;
 class DiactorosHttpFactory implements HttpFactory
 {
     use ResponseTypes;
-    
+
     public function createRequestFromGlobals(): ServerRequestInterface
     {
         return (new ServerRequestFactory())->fromGlobals();

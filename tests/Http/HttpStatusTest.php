@@ -87,7 +87,9 @@ class HttpStatusTest extends TestCase
     {
         $this->assertTrue(defined(sprintf('%s::%s', HttpStatus::class, $constantName)));
 
-        $this->assertSame($reason, HttpStatus::reason($statusCode));
+        $fromStatus = HttpStatus::from($statusCode);
+
+        $this->assertSame($reason, $fromStatus->reason());
     }
 
     /**

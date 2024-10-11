@@ -29,7 +29,7 @@ use Psr\Http\Message\UriInterface;
 class GuzzleHttpFactory implements HttpFactory
 {
     use ResponseTypes;
-    
+
     public function createRequestFromGlobals(): ServerRequestInterface
     {
         return ServerRequest::fromGlobals();

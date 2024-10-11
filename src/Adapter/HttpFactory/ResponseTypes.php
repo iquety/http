@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 use SimpleXMLElement;
 
 /**
- * @method ResponseInterface createResponse
+ * @method ResponseInterface createResponse(int $code = 200, string $reasonPhrase = '')
  */
 trait ResponseTypes
 {
@@ -24,7 +24,7 @@ trait ResponseTypes
     ): ResponseInterface {
         $response = $this->createResponse(
             $status->value,
-            HttpStatus::reason($status->value)
+            HttpStatus::from($status->value)->reason()
         );
 
         $resolvedContent = $this->createStream(
@@ -46,7 +46,7 @@ trait ResponseTypes
     ): ResponseInterface {
         $response = $this->createResponse(
             $status->value,
-            HttpStatus::reason($status->value)
+            HttpStatus::from($status->value)->reason()
         );
 
         $resolvedContent = $this->createStream(
@@ -68,7 +68,7 @@ trait ResponseTypes
     ): ResponseInterface {
         $response = $this->createResponse(
             $status->value,
-            HttpStatus::reason($status->value)
+            HttpStatus::from($status->value)->reason()
         );
 
         $resolvedContent = $this->createStream(
@@ -90,7 +90,7 @@ trait ResponseTypes
     ): ResponseInterface {
         $response = $this->createResponse(
             $status->value,
-            HttpStatus::reason($status->value)
+            HttpStatus::from($status->value)->reason()
         );
 
         $resolvedContent = $this->createStream(

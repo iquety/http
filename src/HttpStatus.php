@@ -71,9 +71,11 @@ enum HttpStatus: int
     case NOT_EXTENDED = 510;                                                // RFC2774
     case NETWORK_AUTHENTICATION_REQUIRED = 511;                             // RFC6585
 
-    public static function reason(int $statusCode): string
+    public function reason(): string
     {
-        return self::all()[$statusCode] ?? '';
+        $statusCode = $this->value;
+
+        return self::all()[$statusCode];
     }
 
     /** @return array<int,string> */
