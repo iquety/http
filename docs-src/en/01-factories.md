@@ -8,10 +8,10 @@ This library provides implementations for the factories suggested in PSR 7, whil
 
 To use them, simply choose an available implementation:
 
-| Implementation                                           | Description       | 
+| Implementation                                           | Description       |
 | :------------------------------------------------------- | :---------------- |
-| Iquety\Http\Adapter\HttpFactory\DiactorosHttpFactory.php | Laminas Diactoros | 
-| Iquety\Http\Adapter\HttpFactory\GuzzleHttpFactory.php    | Guzzle Http       | 
+| Iquety\Http\Adapter\HttpFactory\DiactorosHttpFactory.php | Laminas Diactoros |
+| Iquety\Http\Adapter\HttpFactory\GuzzleHttpFactory.php    | Guzzle Http       |
 | Iquety\Http\Adapter\HttpFactory\NyHolmHttpFactory.php    | NyHolm            |
 
 ## 2. Make a URI

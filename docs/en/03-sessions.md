@@ -9,10 +9,10 @@ To make the use of sessions more flexible, this library provides different imple
 
 To use them, simply choose an available implementation:
 
-| Implementação | Descrição | 
+| Implementação | Descrição |
 |:-- |:-- |
-| Iquety\Http\Adapter\Session\MemorySession.php | Testing session | 
-| Iquety\Http\Adapter\Session\NativeSession.php | PHP Native Session | 
+| Iquety\Http\Adapter\Session\MemorySession.php | Testing session |
+| Iquety\Http\Adapter\Session\NativeSession.php | PHP Native Session |
 
 ## 2. Initializing a session
 

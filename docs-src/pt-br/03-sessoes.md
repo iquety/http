@@ -4,15 +4,15 @@
 
 ## 1. Implementações disponíveis
 
-Para flexibilizar o uso de sessões, esta biblioteca fornece implementações 
+Para flexibilizar o uso de sessões, esta biblioteca fornece implementações
 diferenciadas com base em uma mesma interface.
 
 Para usá-las, basta escolher uma implementação disponível:
 
-| Implementação | Descrição | 
+| Implementação | Descrição |
 |:-- |:-- |
-| Iquety\Http\Adapter\Session\MemorySession.php | Sessão para testes | 
-| Iquety\Http\Adapter\Session\NativeSession.php | Sessão nativa do PHP | 
+| Iquety\Http\Adapter\Session\MemorySession.php | Sessão para testes |
+| Iquety\Http\Adapter\Session\NativeSession.php | Sessão nativa do PHP |
 
 ## 2. Inicializando uma sessão
 
