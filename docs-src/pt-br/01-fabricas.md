@@ -8,11 +8,11 @@ Esta biblioteca fornece implementações para as fábricas sugeridas na PSR 7, a
 
 Para usá-las, basta escolher uma implementação disponível:
 
-| Implementação | Descrição | 
-|:-- |:-- |
+| Implementação                                            | Descrição         | 
+|:-------------------------------------------------------- |:----------------- |
 | Iquety\Http\Adapter\HttpFactory\DiactorosHttpFactory.php | Laminas Diactoros | 
-| Iquety\Http\Adapter\HttpFactory\GuzzleHttpFactory.php | Guzzle Http | 
-| Iquety\Http\Adapter\HttpFactory\NyHolmHttpFactory.php | NyHolm |
+| Iquety\Http\Adapter\HttpFactory\GuzzleHttpFactory.php    | Guzzle Http       | 
+| Iquety\Http\Adapter\HttpFactory\NyHolmHttpFactory.php    | NyHolm            |
 
 ## 2. Fabricar URI
 
