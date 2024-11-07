@@ -28,7 +28,7 @@ use Psr\Http\Message\UriInterface;
  */
 class GuzzleHttpFactory implements HttpFactory
 {
-    use ResponseTypes;
+    use HasResponseFactories;
 
     public function createRequestFromGlobals(): ServerRequestInterface
     {

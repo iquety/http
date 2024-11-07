@@ -12,7 +12,7 @@ use SimpleXMLElement;
 /**
  * @method ResponseInterface createResponse(int $code = 200, string $reasonPhrase = '')
  */
-trait ResponseTypes
+trait HasResponseFactories
 {
     /**
      * @param array<int|string,mixed>|string $content
@@ -123,7 +123,7 @@ trait ResponseTypes
             $content = [ 'content' => $content ];
         }
 
-        return (string)json_encode($content, JSON_FORCE_OBJECT);
+        return (string)json_encode($content);
     }
 
     /** @param array<int|string,mixed>|string $content */

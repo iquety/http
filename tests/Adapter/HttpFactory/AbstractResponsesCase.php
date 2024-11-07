@@ -40,9 +40,16 @@ abstract class AbstractResponsesCase extends TestCase
 
         $list['string'] = ['conteudo', '{"content":"conteudo"}'];
 
-        $list['array'] = [ ['name' => 'value'], '{"name":"value"}' ];
+        $list['array'] = [ ['value'], '["value"]' ];
 
-        $list['array'] = [
+        $list['array sub'] = [
+            ['name' => ['value']],
+            '{"name":["value"]}'
+        ];
+
+        $list['object'] = [ ['name' => 'value'], '{"name":"value"}' ];
+
+        $list['objext sub'] = [
             ['name' => ['sub' => 'value']],
             '{"name":{"sub":"value"}}'
         ];

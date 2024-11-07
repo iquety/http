@@ -22,7 +22,7 @@ use Psr\Http\Message\UriInterface;
  */
 class NyHolmHttpFactory implements HttpFactory
 {
-    use ResponseTypes;
+    use HasResponseFactories;
 
     private Psr17Factory $factory;
 
