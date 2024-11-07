@@ -38,7 +38,7 @@ abstract class AbstractResponsesCase extends TestCase
 
         $list['empty'] = ['', ''];
 
-        $list['string'] = ['conteudo', '{"content":"conteudo"}'];
+        $list['string'] = ['conteudo', '"conteudo"'];
 
         $list['array'] = [ ['value'], '["value"]' ];
 

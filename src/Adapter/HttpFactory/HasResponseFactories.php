@@ -119,10 +119,6 @@ trait HasResponseFactories
             return '';
         }
 
-        if (is_string($content) === true) {
-            $content = [ 'content' => $content ];
-        }
-
         return (string)json_encode($content);
     }
 
