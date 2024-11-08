@@ -7,6 +7,7 @@ namespace Iquety\Http\Adapter\HttpFactory;
 use Iquety\Http\HttpMime;
 use Iquety\Http\HttpStatus;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\UriInterface;
 use SimpleXMLElement;
 
 /**
@@ -178,5 +179,14 @@ trait HasResponseFactories
         }
 
         return (string)$element->asXML();
+    }
+
+    public function createRedirect(
+        UriInterface $uri,
+        HttpStatus $status = HttpStatus::FOUND
+    ): ResponseInterface {
+        $response = $this->createResponse($status->value, $status->reason());
+
+        return $response->withHeader('Location', (string)$uri);
     }
 }

@@ -12,6 +12,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
+use Psr\Http\Message\UriInterface;
 
 interface HttpFactory extends
     RequestFactoryInterface,
@@ -44,6 +45,11 @@ interface HttpFactory extends
     /** @param array<int|string,mixed>|string $content */
     public function createResponseText(
         array|string $content,
+        HttpStatus $status = HttpStatus::OK
+    ): ResponseInterface;
+
+    public function createRedirect(
+        UriInterface $uri,
         HttpStatus $status = HttpStatus::OK
     ): ResponseInterface;
 }

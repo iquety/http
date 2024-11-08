@@ -67,6 +67,56 @@ $factories->createResponse(
 );
 ```
 
+Cria uma resposta JSON:
+
+```php
+$factories = new DiactorosHttpFactory();
+$factories->createResponseJson(
+    ['conteudo' => 'da resposta'],
+    HttpStatus::OK
+);
+```
+
+Cria uma resposta XML:
+
+```php
+$factories = new DiactorosHttpFactory();
+$factories->createResponseXml(
+    ['conteudo' => 'da resposta'],
+    HttpStatus::OK
+);
+```
+
+Cria uma resposta HTML:
+
+```php
+$factories = new DiactorosHttpFactory();
+$factories->createResponseHtml(
+    '<html>...</html>',
+    HttpStatus::OK
+);
+```
+
+Cria uma resposta textual:
+
+```php
+$factories = new DiactorosHttpFactory();
+$factories->createResponseText(
+    'monomon monomon mon',
+    HttpStatus::OK
+);
+```
+
+Cria uma resposta de redirecionamento:
+
+```php
+$factories = new DiactorosHttpFactory();
+$factories->createRedirect(
+    $factories->createUri('/destino'),
+    HttpStatus::FOUND
+);
+```
+
 ## 5. Fabricar fluxos de dados
 
 Cria uma mensagem de texto:

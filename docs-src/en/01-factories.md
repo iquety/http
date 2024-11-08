@@ -66,6 +66,56 @@ $factories->createResponse(
 );
 ```
 
+Create a JSON response:
+
+```php
+$factories = new DiactorosHttpFactory();
+$factories->createResponseJson(
+    ['response' => 'content'],
+    HttpStatus::OK
+);
+```
+
+Create a XML response:
+
+```php
+$factories = new DiactorosHttpFactory();
+$factories->createResponseXml(
+    ['response' => 'content'],
+    HttpStatus::OK
+);
+```
+
+Create a HTML response:
+
+```php
+$factories = new DiactorosHttpFactory();
+$factories->createResponseHtml(
+    '<html>...</html>',
+    HttpStatus::OK
+);
+```
+
+Create a plain text response:
+
+```php
+$factories = new DiactorosHttpFactory();
+$factories->createResponseText(
+    'monomon monomon mon',
+    HttpStatus::OK
+);
+```
+
+Create a redirect response:
+
+```php
+$factories = new DiactorosHttpFactory();
+$factories->createRedirect(
+    $factories->createUri('/destination'),
+    HttpStatus::FOUND
+);
+```
+
 ## 5. Make data streams
 
 Create a text message:

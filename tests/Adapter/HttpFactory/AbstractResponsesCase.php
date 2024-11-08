@@ -256,4 +256,27 @@ abstract class AbstractResponsesCase extends TestCase
 
         $this->assertSame(HttpMime::TEXT->value, $response->getHeaderLine('Content-type'));
     }
+
+    /**
+     * @test
+     * @SuppressWarnings(PHPMD.StaticAccess)
+     */
+    public function createRedirect(): void
+    {
+        $statusList = array_flip(HttpStatus::all());
+
+        $uri = $this->makeFactory()->createUri('/redirect');
+
+        foreach ($statusList as $status) {
+            $statusObject = HttpStatus::from($status);
+
+            $response = $this->makeFactory()->createRedirect($uri, $statusObject);
+
+            $this->assertSame($statusObject->value, $response->getStatusCode());
+
+            $this->assertSame($statusObject->reason(), $response->getReasonPhrase());
+
+            $this->assertSame('/redirect', $response->getHeaderLine('Location'));
+        }
+    }
 }
