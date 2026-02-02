@@ -124,7 +124,7 @@ class MemorySession implements Session
      * 0 sets the cookie to expire with browser session.
      * Time is in seconds, and is not a Unix timestamp.
      */
-    public function invalidate(int $lifetime = null): void
+    public function invalidate(?int $lifetime = null): void
     {
         static::$session['id'] = microtime(); //@phpstan-ignore-line
         static::$session['data'] = []; //@phpstan-ignore-line

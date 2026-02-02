@@ -64,7 +64,7 @@ interface Session
      * @param int $lifetime tempo de vida do cookie em segundos
      * @throws RuntimeException se a invalidação falhar
      */
-    public function invalidate(int $lifetime = null): void;
+    public function invalidate(?int $lifetime = null): void;
 
     /** Adiciona uma mensagem ao campo especificado */
     public function addFlash(string $field, string $message): void;

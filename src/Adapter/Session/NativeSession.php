@@ -137,7 +137,7 @@ class NativeSession implements Session
      * 0 sets the cookie to expire with browser session.
      * Time is in seconds, and is not a Unix timestamp.
      */
-    public function invalidate(int $lifetime = null): void
+    public function invalidate(?int $lifetime = null): void
     {
         $this->sessionObject()->invalidate($lifetime);
     }

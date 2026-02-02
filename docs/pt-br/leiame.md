@@ -1,7 +1,7 @@
 # Iquety Http
 
 [![GitHub Release](https://img.shields.io/github/release/iquety/http.svg)](https://github.com/iquety/http/releases/latest)
-![PHP Version](https://img.shields.io/badge/php-%5E8.3-blue)
+![PHP Version](https://img.shields.io/badge/php-%5E8.4-blue)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/79e22254153d45878c217b700d2c31b2)](https://app.codacy.com/gh/iquety/http/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/79e22254153d45878c217b700d2c31b2)](https://app.codacy.com/gh/iquety/http/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
