@@ -19,7 +19,6 @@ composer require iquety/http
 
 ## Characteristics
 
-- Made for PHP 8.3 or higher;
 - Codified with best practices and maximum quality;
 - Well documented and IDE friendly;
 - Made with TDD (Test Driven Development);
