@@ -6,8 +6,6 @@ namespace Tests\Adapter\HttpFactory;
 
 use Iquety\Http\HttpFactory;
 use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\UploadedFileInterface;
-use Psr\Http\Message\UriInterface;
 use Tests\TestCase;
 
 /**
@@ -15,8 +13,6 @@ use Tests\TestCase;
  */
 abstract class AbstractStreamsCase extends TestCase
 {
-    abstract protected function makeFactory(): HttpFactory;
-
     /** @test */
     public function createStream(): void
     {
@@ -43,4 +39,5 @@ abstract class AbstractStreamsCase extends TestCase
 
         $this->assertInstanceOf(StreamInterface::class, $object);
     }
+    abstract protected function makeFactory(): HttpFactory;
 }

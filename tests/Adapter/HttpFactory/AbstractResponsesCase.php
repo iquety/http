@@ -5,15 +5,9 @@ declare(strict_types=1);
 namespace Tests\Adapter\HttpFactory;
 
 use Iquety\Http\HttpFactory;
-use InvalidArgumentException;
 use Iquety\Http\HttpMime;
 use Iquety\Http\HttpStatus;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\UploadedFileInterface;
-use Psr\Http\Message\UriInterface;
 use Tests\TestCase;
 
 /**
@@ -21,8 +15,6 @@ use Tests\TestCase;
  */
 abstract class AbstractResponsesCase extends TestCase
 {
-    abstract protected function makeFactory(): HttpFactory;
-
     /** @test */
     public function createResponse(): void
     {
@@ -60,9 +52,9 @@ abstract class AbstractResponsesCase extends TestCase
     /**
      * @test
      * @dataProvider jsonProvider
-     * @param string|array<mixed> $content
+     * @param array<mixed>|string $content
      */
-    public function createResponseJson(string|array $content, string $body): void
+    public function createResponseJson(array|string $content, string $body): void
     {
         $response = $this->makeFactory()->createResponseJson($content, HttpStatus::ACCEPTED);
 
@@ -76,7 +68,7 @@ abstract class AbstractResponsesCase extends TestCase
             $response->getReasonPhrase()
         );
 
-        $this->assertSame($body, (string)$response->getBody());
+        $this->assertSame($body, (string) $response->getBody());
 
         $this->assertTrue($response->hasHeader('Content-type'));
 
@@ -118,9 +110,9 @@ abstract class AbstractResponsesCase extends TestCase
     /**
      * @test
      * @dataProvider xmlProvider
-     * @param string|array<mixed> $content
+     * @param array<mixed>|string $content
      */
-    public function createResponseXml(string|array $content, string $body): void
+    public function createResponseXml(array|string $content, string $body): void
     {
         $response = $this->makeFactory()->createResponseXml($content, HttpStatus::ACCEPTED);
 
@@ -134,7 +126,7 @@ abstract class AbstractResponsesCase extends TestCase
             $response->getReasonPhrase()
         );
 
-        $this->assertSame($body, (string)$response->getBody());
+        $this->assertSame($body, (string) $response->getBody());
 
         $this->assertTrue($response->hasHeader('Content-type'));
 
@@ -148,11 +140,11 @@ abstract class AbstractResponsesCase extends TestCase
 
         $list['empty'] = [
             '',
-            ""
+            ''
         ];
         $list['string'] = [
             'conteudo',
-            "conteudo"
+            'conteudo'
         ];
 
         $list['array'] = [
@@ -176,9 +168,9 @@ abstract class AbstractResponsesCase extends TestCase
     /**
      * @test
      * @dataProvider htmlProvider
-     * @param string|array<mixed> $content
+     * @param array<mixed>|string $content
      */
-    public function createResponseHtml(string|array $content, string $body): void
+    public function createResponseHtml(array|string $content, string $body): void
     {
         $response = $this->makeFactory()->createResponseHtml($content, HttpStatus::ACCEPTED);
 
@@ -192,7 +184,7 @@ abstract class AbstractResponsesCase extends TestCase
             $response->getReasonPhrase()
         );
 
-        $this->assertSame($body, (string)$response->getBody());
+        $this->assertSame($body, (string) $response->getBody());
 
         $this->assertTrue($response->hasHeader('Content-type'));
 
@@ -206,11 +198,11 @@ abstract class AbstractResponsesCase extends TestCase
 
         $list['empty'] = [
             '',
-            ""
+            ''
         ];
         $list['string'] = [
             'conteudo',
-            "conteudo"
+            'conteudo'
         ];
 
         $list['array'] = [
@@ -234,9 +226,9 @@ abstract class AbstractResponsesCase extends TestCase
     /**
      * @test
      * @dataProvider textProvider
-     * @param string|array<mixed> $content
+     * @param array<mixed>|string $content
      */
-    public function createResponseText(string|array $content, string $body): void
+    public function createResponseText(array|string $content, string $body): void
     {
         $response = $this->makeFactory()->createResponseText($content, HttpStatus::ACCEPTED);
 
@@ -250,7 +242,7 @@ abstract class AbstractResponsesCase extends TestCase
             $response->getReasonPhrase()
         );
 
-        $this->assertSame($body, (string)$response->getBody());
+        $this->assertSame($body, (string) $response->getBody());
 
         $this->assertTrue($response->hasHeader('Content-type'));
 
@@ -279,4 +271,5 @@ abstract class AbstractResponsesCase extends TestCase
             $this->assertSame('/redirect', $response->getHeaderLine('Location'));
         }
     }
+    abstract protected function makeFactory(): HttpFactory;
 }

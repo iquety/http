@@ -103,6 +103,15 @@ trait HasResponseFactories
             ->withBody($resolvedContent);
     }
 
+    public function createRedirect(
+        UriInterface $uri,
+        HttpStatus $status = HttpStatus::FOUND
+    ): ResponseInterface {
+        $response = $this->createResponse($status->value, $status->reason());
+
+        return $response->withHeader('Location', (string) $uri);
+    }
+
     /** @param array<int|string,mixed>|string $content */
     private function makeHtmlResponse(array|string $content): string
     {
@@ -120,7 +129,7 @@ trait HasResponseFactories
             return '';
         }
 
-        return (string)json_encode($content);
+        return (string) json_encode($content);
     }
 
     /** @param array<int|string,mixed>|string $content */
@@ -167,26 +176,17 @@ trait HasResponseFactories
             }
 
             if (is_array($value) === true) {
-                $this->arrayToXml($value, $element->addChild((string)$tag));
+                $this->arrayToXml($value, $element->addChild((string) $tag));
 
                 continue;
             }
 
             $element->addChild(
-                (string)$tag,
-                (string)htmlentities((string)$value)
+                (string) $tag,
+                (string) htmlentities((string) $value)
             );
         }
 
-        return (string)$element->asXML();
-    }
-
-    public function createRedirect(
-        UriInterface $uri,
-        HttpStatus $status = HttpStatus::FOUND
-    ): ResponseInterface {
-        $response = $this->createResponse($status->value, $status->reason());
-
-        return $response->withHeader('Location', (string)$uri);
+        return (string) $element->asXML();
     }
 }

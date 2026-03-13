@@ -14,8 +14,6 @@ use Tests\TestCase;
  */
 abstract class AbstractCommonsCase extends TestCase
 {
-    abstract protected function makeFactory(): HttpFactory;
-
     /** @test */
     public function createUploadedFile(): void
     {
@@ -32,4 +30,5 @@ abstract class AbstractCommonsCase extends TestCase
 
         $this->assertInstanceOf(UriInterface::class, $object);
     }
+    abstract protected function makeFactory(): HttpFactory;
 }

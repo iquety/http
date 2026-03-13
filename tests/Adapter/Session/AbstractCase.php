@@ -10,8 +10,6 @@ use Tests\TestCase;
 /** @SuppressWarnings(PHPMD.TooManyPublicMethods) */
 abstract class AbstractCase extends TestCase
 {
-    abstract protected function makeFactory(): Session;
-
     /** @test */
     public function start(): void
     {
@@ -273,4 +271,5 @@ abstract class AbstractCase extends TestCase
 
         $this->assertSame([], $session->forgetAllFlash());
     }
+    abstract protected function makeFactory(): Session;
 }

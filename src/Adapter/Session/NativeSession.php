@@ -22,19 +22,6 @@ class NativeSession implements Session
 
     private bool $testMode = false;
 
-    private function sessionObject(): SymfonyObject
-    {
-        if ($this->session === null) {
-            $storage = $this->testMode === true
-                ? new MockArraySessionStorage()
-                : new NativeSessionStorage(); // @codeCoverageIgnore
-
-            $this->session = new SymfonyObject($storage, new AttributeBag());
-        }
-
-        return $this->session;
-    }
-
     public function enableTestMode(): void
     {
         $this->testMode = true;
@@ -181,5 +168,18 @@ class NativeSession implements Session
     public function allFlash(): array
     {
         return $this->sessionObject()->getFlashBag()->peekAll();
+    }
+
+    private function sessionObject(): SymfonyObject
+    {
+        if ($this->session === null) {
+            $storage = $this->testMode === true
+                ? new MockArraySessionStorage()
+                : new NativeSessionStorage(); // @codeCoverageIgnore
+
+            $this->session = new SymfonyObject($storage, new AttributeBag());
+        }
+
+        return $this->session;
     }
 }

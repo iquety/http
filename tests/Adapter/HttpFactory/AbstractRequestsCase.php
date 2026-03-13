@@ -7,11 +7,7 @@ namespace Tests\Adapter\HttpFactory;
 use Iquety\Http\HttpFactory;
 use InvalidArgumentException;
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\UploadedFileInterface;
-use Psr\Http\Message\UriInterface;
 use Tests\TestCase;
 
 /**
@@ -19,8 +15,6 @@ use Tests\TestCase;
  */
 abstract class AbstractRequestsCase extends TestCase
 {
-    abstract protected function makeFactory(): HttpFactory;
-
     /** @test */
     public function createRequestFromGlobals(): void
     {
@@ -63,4 +57,5 @@ abstract class AbstractRequestsCase extends TestCase
 
         $this->makeFactory()->createServerRequest('', '/user/33', []);
     }
+    abstract protected function makeFactory(): HttpFactory;
 }
