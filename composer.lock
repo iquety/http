@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e4f671584b69febcbb74a1ada9238267",
+    "content-hash": "779815400ca19928548f00120f4b9dc8",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -1933,20 +1933,20 @@
         },
         {
             "name": "iquety/console",
-            "version": "v4.1.0",
+            "version": "v4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iquety/console.git",
-                "reference": "02ed783fecb1fd29fdcdd248bdbf25582a87ac67"
+                "reference": "9fa9670ce5275235c766141a2ed12d71cd289a0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iquety/console/zipball/02ed783fecb1fd29fdcdd248bdbf25582a87ac67",
-                "reference": "02ed783fecb1fd29fdcdd248bdbf25582a87ac67",
+                "url": "https://api.github.com/repos/iquety/console/zipball/9fa9670ce5275235c766141a2ed12d71cd289a0b",
+                "reference": "9fa9670ce5275235c766141a2ed12d71cd289a0b",
                 "shasum": ""
             },
             "require": {
-                "iquety/security": "dev-main",
+                "iquety/security": "@stable",
                 "php": "^8.4.0"
             },
             "require-dev": {
@@ -1975,9 +1975,9 @@
             ],
             "support": {
                 "issues": "https://github.com/iquety/console/issues",
-                "source": "https://github.com/iquety/console/tree/v4.1.0"
+                "source": "https://github.com/iquety/console/tree/v4.1.2"
             },
-            "time": "2026-03-13T19:48:57+00:00"
+            "time": "2026-03-17T17:14:32+00:00"
         },
         {
             "name": "iquety/docmap",
@@ -2031,7 +2031,7 @@
         },
         {
             "name": "iquety/security",
-            "version": "dev-main",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iquety/security.git",
@@ -2054,7 +2054,6 @@
                 "phpstan/phpstan": "^1.8",
                 "phpunit/phpunit": "^9.5"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -2073,7 +2072,7 @@
             ],
             "support": {
                 "issues": "https://github.com/iquety/security/issues",
-                "source": "https://github.com/iquety/security/tree/main"
+                "source": "https://github.com/iquety/security/tree/v2.2.0"
             },
             "time": "2026-03-13T18:39:56+00:00"
         },
@@ -6481,7 +6480,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {
         "codacy/coverage": 20
     },

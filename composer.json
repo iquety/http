@@ -4,6 +4,7 @@
     "description": "Library to handle Http messages",
     "keywords": ["library"],
     "license": "MIT",
+    "minimum-stability": "stable",
     "require": {
         "php": "^8.4.0",
         "guzzlehttp/guzzle": "^7.10",
@@ -39,7 +40,6 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts" : {
         "test": [
